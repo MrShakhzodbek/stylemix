@@ -1,6 +1,6 @@
 <template>
   <!-- Header-Section-Start -->
-    <Header/>
+  <Header />
   <!-- Header-Section-Finish -->
 
   <!-- Main-Section-Start -->
@@ -38,7 +38,7 @@
   <!-- Article-Section-Start -->
   <article>
     <img class="round" src="../images/arc.png" alt="round">
-  <img class="back" src="../images/img.png" alt="round">
+    <img class="back" src="../images/Img.jpg" alt="round">
     <div class="offer">
       <div class="container">
         <h2>What We Offer</h2>
@@ -52,14 +52,19 @@
     <div class="article_lists">
       <div class="container">
         <div class="list">
-          <ul v-for="item, index in lists" :key="index">
-            <li><sup>0{{ item.num }}</sup> {{ item.text }}</li>
-
+          <ul>
+            <li><sup>01</sup> Consulting</li>
+            <li><sup>02</sup> Digital Business Models</li>
+            <li><sup>03</sup> Enterprise Customer Experience</li>
+            <li><sup>04</sup> Audit & Assurance</li>
           </ul>
         </div>
         <div class="list">
-          <ul v-for="item, index in listsNew" :key="index">
-            <li><sup>0{{ item.num }}</sup> {{ item.text }}</li>
+          <ul>
+            <li><sup>05</sup> Bonds & Commodities</li>
+            <li><sup>06</sup> Trades & Stocks</li>
+            <li><sup>07</sup> Business Opportunities</li>
+            <li><sup>08</sup> Strategic Planning</li>
           </ul>
         </div>
       </div>
@@ -79,56 +84,14 @@
   <!-- Article-Section-Finish -->
 
   <!-- Footer-Start -->
-  <Footer/>
+  <Footer />
   <!-- Footer-Finish -->
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
+<script setup>
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 
-interface Objects {
-  num: number | null,
-  text: string
-}
-
-const lists = ref<Objects[]>([
-  {
-    num: 1,
-    text: 'Consulting'
-  },
-  {
-    num: 2,
-    text: 'Digital Business Models'
-  },
-  {
-    num: 3,
-    text: 'Enterprise Customer Experience'
-  },
-  {
-    num: 4,
-    text: 'Audit & Assurance'
-  }
-])
-const listsNew = ref<Objects[]>([
-  {
-    num: 5,
-    text: 'Bonds & Commodities'
-  },
-  {
-    num: 6,
-    text: 'Trades & Stocks'
-  },
-  {
-    num: 7,
-    text: 'Business Opportunities'
-  },
-  {
-    num: 8,
-    text: 'Strategic Planning'
-  }
-])
 
 </script>
 
@@ -248,35 +211,70 @@ main {
     }
   }
 }
+
+@media(max-width:376px) {
+  main {
+    .container {
+      .row {
+        padding-inline: 30px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+
+    .main_info,
+    .main_text {
+      width: 100%;
+    }
+
+    .main_info {
+
+      .main_info_details {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+
+}
+
 // ==== Main-Finish ====
 
 // ==== Article-Start ====
 article {
   position: relative;
-  .back{
+
+  .back {
     position: absolute;
     right: 0;
     top: 0;
     z-index: 10;
   }
-  .round{
+
+  .round {
     position: absolute;
     z-index: 20;
     right: 23%;
     top: 50%;
     animation: round ease 400s infinite;
   }
+
   @keyframes round {
-    0%{
+    0% {
       transform: rotateZ(0deg)deg;
     }
-    50%{
+
+    50% {
       transform: rotateZ(3600deg);
     }
-    100%{
+
+    100% {
       transform: rotateZ(0deg);
     }
   }
+
   .offer {
     padding: 133px 0 43px;
 
@@ -328,7 +326,7 @@ article {
           border: 2px solid #A6876A;
           padding: 14px 15px;
           text-decoration: none;
-          color:  #0E163D;
+          color: #0E163D;
           text-align: center;
           font-size: 16px;
           font-style: normal;
@@ -399,4 +397,52 @@ article {
     }
   }
 }
-</style>
+
+@media(max-width:376px) {
+  article {
+    padding-inline: 30px;
+
+    .round,
+    .back {
+      display: none;
+    }
+
+    .offer {
+      .article_details {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .article_lists {
+      .container{
+        display: flex;
+      flex-direction: column;
+      }
+    }
+    .brands .container .logos{
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      animation: brandsImage ease 100s infinite;
+    }
+
+    @keyframes brandsImage {
+      0%{
+        transform: translateX(0);
+      }
+      25%{
+        transform: translateX(-600px);
+      }
+      50%{
+        transform: translateX(0);
+      }
+      75%{
+        transform: translateX(600px);
+      }
+      100%{
+        transform: translateX(0);
+      }
+    }
+  }
+}</style>
